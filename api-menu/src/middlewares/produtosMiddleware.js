@@ -1,5 +1,5 @@
 const validateBody = (req, res, next) => {
-    const body = req;
+    const { body } = req;
 
     if(body.nome == undefined || body.nome == ""){
         return res.status(400).json({message: 'É obrigatorio o campo nome'})
@@ -16,7 +16,7 @@ const validateBody = (req, res, next) => {
     if(body.tipo == undefined || body.tipo == ""){
         return res.status(400).json({message: 'É obrigatorio o campo tipo'})
     }
-
+    next()
 }
 
 module.exports = {

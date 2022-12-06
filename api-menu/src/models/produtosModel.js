@@ -7,7 +7,7 @@ const getAll = async () => {
 
 const createProduto = async(produto) => {
     const{nome, descricao, preco, tipo } = produto;
-    const query = 'INSERT INTO clientes(nome, descricao, preco, tipo) VALUES (?, ?, ?, ?)';
+    const query = 'INSERT INTO produtos(nome, descricao, preco, tipo) VALUES (?, ?, ?, ?)';
     const createProduto = conn.execute(query, [nome, descricao, preco, tipo])
     return {createProduto: createProduto.insertId};
 }

@@ -22,5 +22,6 @@ router.put('/clientes/:id', clienteController.updateCliente)
 router.get('/produtos', produtosController.getAll)
 
 router.post('/produtos/cadastro', produtosMiddleware.validateBody, produtosController.createProduto)
+
 module.exports = router;
 
