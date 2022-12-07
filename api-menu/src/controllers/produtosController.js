@@ -18,7 +18,14 @@ const createProduto = async (req, res) => {
     }
 }
 
+const deleteProdutos = async(req, res) => {
+    const {id} = req.params;
+    await produtosModel.deleteProdutos(id, res);
+    return res;
+}
+
 module.exports = {
     getAll,
-    createProduto
+    createProduto,
+    deleteProdutos
 }

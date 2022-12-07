@@ -23,5 +23,7 @@ router.get('/produtos', produtosController.getAll)
 
 router.post('/produtos/cadastro', produtosMiddleware.validateBody, produtosController.createProduto)
 
+router.delete('/produtos/:id', produtosController.deleteProdutos)
+
 module.exports = router;
 

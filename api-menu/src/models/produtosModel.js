@@ -12,7 +12,17 @@ const createProduto = async(produto) => {
     return {createProduto: createProduto.insertId};
 }
 
+const deleteProdutos = async(id, res) => {
+    try {
+        const removeProdutos = await conn.execute('DELETE FROM produtos WHERE id_produto = ?', [id]);
+        return res.status(204).json();
+    } catch (error) {
+        return res.status(400).json({mensage: "Erro tabela"});
+    }
+}
+
 module.exports = {
     getAll,
-    createProduto
+    createProduto,
+    deleteProdutos
 }
