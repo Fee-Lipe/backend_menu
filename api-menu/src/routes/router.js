@@ -3,6 +3,8 @@ const clienteController = require('../controllers/clienteController')
 const clienteMiddleware = require('../middlewares/clientesMiddleware')
 const produtosController = require('../controllers/produtosController')
 const produtosMiddleware = require('../middlewares/produtosMiddleware')
+const funController = require('../controllers/funcionarioController')
+const funMiddleware = require('../middlewares/funcionarioMiddleware')
 
 const router = express.Router();
 //-------------- Rotas dos clientes ---------------------------/
@@ -17,13 +19,21 @@ router.post('/login', clienteMiddleware.validPassAndEmail, clienteController.cli
 router.delete('/clientes/:id', clienteController.deletaCliente)
 
 router.put('/clientes/:id', clienteController.updateCliente)
-//-------------------------------------------------------------/
+//-----------------------ROTAS PRODUTOS------------------------------/
 
 router.get('/produtos', produtosController.getAll)
+
+router.get('/produtos/:id', produtosController.getOne)
 
 router.post('/produtos/cadastro', produtosMiddleware.validateBody, produtosController.createProduto)
 
 router.delete('/produtos/:id', produtosController.deleteProdutos)
+
+//-----------------------ROTAS FUNCIONARIOS------------------------------/
+
+router.get('/func', funController.getAll)
+
+router.post('/func/cadastro', funMiddleware.validateBody, funController.createFunc)
 
 module.exports = router;
 

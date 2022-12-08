@@ -6,6 +6,19 @@ const getAll = async (_req, res) => {
     return res.status(200).json(produtos)
 }
 
+const getOne = async (req, res) => {
+    try {
+        const {id} = req.params;
+        await produtosModel.getOne(id , res);
+        return res
+    } catch (error) {
+        res.status(401).json({
+            code: 401,
+            data: error.menssage
+        })
+    }
+}
+
 const createProduto = async (req, res) => {
     try {
         const produtos = await produtosModel.createProduto(req.body);
@@ -26,6 +39,7 @@ const deleteProdutos = async(req, res) => {
 
 module.exports = {
     getAll,
+    getOne,
     createProduto,
     deleteProdutos
 }
