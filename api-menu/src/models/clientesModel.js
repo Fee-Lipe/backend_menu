@@ -9,12 +9,12 @@ const getAll = async () => {
 }
 
 
-const createCliente = async (cliente) => {
+const createCliente = async (cliente, res) => {
     const {nome, usuario, email, senha} = cliente
     const senhaCrypt = bcrypt.hash(senha, 10, (errBcrypt, hash) => {
         if(errBcrypt){return console.log("triste")}
         const query = 'INSERT INTO clientes(nome, usuario, email, senha) VALUES (?, ?, ?, ?)';
-        const createCliente =  conn.execute(query, [nome, usuario, email, hash]);
+        const createCliente = conn.execute(query, [nome, usuario, email, hash]);
         return {createCliente: createCliente.insertId};
     })   
     
